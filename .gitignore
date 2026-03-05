@@ -1,10 +1,38 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
+
+# Virtual environment
 venv/
-.venv/
-.env.local
+.env/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python build
+build/
+dist/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+
+# Local database
+*.db
+*.sqlite
+
+# Generated data
 professional_profiles.json
