@@ -2,6 +2,8 @@ pymongo
 python-dotenv
 requests
 pydantic
-python-dotenv
+# python-dotenv
 langchain
 langgraph
+langchain-core
+dnspython
