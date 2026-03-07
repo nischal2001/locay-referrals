@@ -18,6 +18,7 @@ class SearchProfessionalsTool:
         for r in results:
             formatted.append({
                 "name": r.get("name"),
+                "email": r.get("email"),  # ⭐ ADD THIS LINE
                 "role": r.get("role"),
                 "city": r.get("city"),
                 "company": r.get("company"),

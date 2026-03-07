@@ -1,22 +1,49 @@
+from services.email_service import EmailService
+
+
 class MessagingMCP:
 
     @staticmethod
-    def send_messages(candidates, message):
+    def send_messages(results):
 
         sent_to = []
 
-        for r in candidates:
+        subject = "Quick connection regarding referral"
 
-            candidate = r["candidate"]
+        for r in results:
 
-            name = candidate["name"]
-            role = candidate["role"]
-            company = candidate["company"]
+            # Debug print
+            print("DEBUG RESULT:", r)
 
-            # Simulate sending message
-            print(f"\nSending message to {name} ({role} at {company})")
-            print("Message:", message)
+            candidate = r.get("candidate")
 
-            sent_to.append(name)
+            if not candidate:
+                print("Candidate missing:", r)
+                continue
+
+            name = candidate.get("name")
+            email = candidate.get("email")
+
+            if not email:
+                print(f"No email found for {name}")
+                continue
+
+            print(f"Sending email to {name} -> {email}")
+
+            body = f"""
+Hi {name},
+
+I came across your profile while exploring professionals in {candidate.get('city')}.
+
+Would love to connect regarding referral opportunities if you're open to it.
+
+Best,
+Locay Referrals
+"""
+
+            success = EmailService.send_email(email, subject, body)
+
+            if success:
+                sent_to.append(name)
 
         return sent_to

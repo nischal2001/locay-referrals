@@ -52,7 +52,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "regarding referral opportunities."
             )
 
-            sent_to = MessagingMCP.send_messages(candidates, message)
+            sent_to = MessagingMCP.send_messages(candidates)
 
             response = "Messages sent to:\n\n"
 
