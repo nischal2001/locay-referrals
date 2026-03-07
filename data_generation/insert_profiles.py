@@ -1,8 +1,19 @@
 from pymongo import MongoClient
 import json
+import os
+from dotenv import load_dotenv
 
-# Connect to local MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+# Load environment variables
+load_dotenv()
+
+# Get Mongo URI from .env
+MONGO_URI = os.getenv("MONGO_URI")
+
+if not MONGO_URI:
+    raise Exception("MONGO_URI not found in environment variables")
+
+# Connect to MongoDB Atlas
+client = MongoClient(MONGO_URI)
 
 # Select database
 db = client["locay_referrals"]
@@ -17,4 +28,4 @@ with open("professional_profiles.json", "r") as f:
 # Insert into MongoDB
 result = collection.insert_many(profiles)
 
-print(f"Inserted {len(result.inserted_ids)} profiles into MongoDB.")
+print(f"Inserted {len(result.inserted_ids)} profiles into MongoDB Atlas.")
