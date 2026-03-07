@@ -3,14 +3,19 @@ import uuid
 from datetime import datetime
 import json
 
+
+# Cities
 cities = [
     "Pune",
     "Bangalore",
     "Hyderabad",
     "Mumbai",
-    "Chennai"
+    "Chennai",
+    "Vizag"
 ]
 
+
+# Roles
 roles = [
     "Backend Engineer",
     "Frontend Engineer",
@@ -19,6 +24,8 @@ roles = [
     "QA Automation Engineer"
 ]
 
+
+# Company tiers
 company_tiers = [
     "Product",
     "Startup",
@@ -26,6 +33,8 @@ company_tiers = [
     "Enterprise"
 ]
 
+
+# Tech stacks
 backend_stack = [
     "Python",
     "Java",
@@ -42,7 +51,24 @@ frontend_stack = [
     "TypeScript"
 ]
 
+
+# Indian name datasets
+first_names = [
+    "Arjun","Rohit","Aman","Karan","Vikram","Rahul","Aditya","Ankit",
+    "Nikhil","Varun","Siddharth","Pranav","Akshay","Manish","Harsh",
+    "Neha","Sneha","Priya","Ananya","Riya","Pooja","Kavya","Megha",
+    "Shreya","Tanvi","Aditi","Ishita","Divya","Ritika"
+]
+
+last_names = [
+    "Sharma","Patel","Reddy","Verma","Gupta","Singh","Agarwal",
+    "Mehta","Jain","Chopra","Nair","Iyer","Kulkarni","Deshmukh",
+    "Joshi","Pandey","Malhotra","Kapoor","Bansal","Mittal"
+]
+
+
 def generate_profile():
+
     role = random.choice(roles)
 
     if role == "Frontend Engineer":
@@ -50,9 +76,18 @@ def generate_profile():
     else:
         tech_stack = random.sample(backend_stack, 3)
 
+    # Generate Indian name
+    first = random.choice(first_names)
+    last = random.choice(last_names)
+    name = f"{first} {last}"
+
+    # Generate email (Yopmail)
+    email = f"{first.lower()}.{last.lower()}{random.randint(1,999)}@yopmail.com"
+
     profile = {
         "professional_id": f"p_{uuid.uuid4().hex[:8]}",
-        "name": f"Professional_{random.randint(1000,9999)}",
+        "name": name,
+        "email": email,
         "city": random.choice(cities),
         "role": role,
         "company": f"Company_{random.randint(1,200)}",
@@ -74,7 +109,7 @@ for _ in range(500):
     profiles.append(generate_profile())
 
 
-# Save to JSON (optional but useful for inspection)
+# Save to JSON
 with open("professional_profiles.json", "w") as f:
     json.dump(profiles, f, indent=4)
 

@@ -7,3 +7,4 @@ langchain
 langgraph
 langchain-core
 dnspython
+python-telegram-bot

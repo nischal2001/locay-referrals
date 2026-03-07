@@ -1,17 +1,18 @@
-# Python
+# Python cache
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 
-# Virtual environment
+# Virtual environments
 venv/
 .env/
+.venv/
 
 # Environment variables
 .env
+.env.*
 
-# IDE
+# IDE / Editors
 .vscode/
 .idea/
 
@@ -22,17 +23,26 @@ Thumbs.db
 # Logs
 *.log
 
-# Python build
+# Python build artifacts
 build/
 dist/
 *.egg-info/
+*.egg
 
 # Testing
 .pytest_cache/
+.coverage
 
-# Local database
+# Local databases
 *.db
 *.sqlite
 
-# Generated data
+# Generated datasets
 professional_profiles.json
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Mac/Linux temp files
+*.swp
+*.swo
